@@ -16,6 +16,28 @@ import { CustomButton } from "../Components/CustomButton";
 
 export const Customizer = () => {
   const snap = useSnapshot(state);
+  const [file, setFile] = useState("");
+  const [promt, setPromt] = useState("");
+  const [generatingImg, setGeneratingImg] = useState(false);
+  const [activeEditorTab, setActiveEditorTab] = useState("");
+  const [activeFilerTab, setActiveFilterTab] = useState({
+    logoShirt: true,
+    stylishShort: false,
+  });
+
+  // show tab content depending on the active tab
+  const generateTabContent = () => {
+    switch (activeEditorTab) {
+      case "colorPicker":
+        return <ColorPicker />;
+      case "filePicker":
+        return <FilePicker />;
+      case "aiPicker":
+        return <AiPicker />;
+      default:
+        return null;
+    }
+  };
   return (
     <AnimatePresence>
       {!snap.intro && (
@@ -28,8 +50,13 @@ export const Customizer = () => {
             <div className="flex items-center min-h-screen">
               <div className="editortabs-container tabs">
                 {EditorTabs.map((tab) => (
-                  <Tab key={tab.name} tab={tab} handleClick={() => {}} />
+                  <Tab
+                    key={tab.name}
+                    tab={tab}
+                    handleClick={() => setActiveEditorTab(tab.name)}
+                  />
                 ))}
+                {generateTabContent()}
               </div>
             </div>
           </motion.div>
