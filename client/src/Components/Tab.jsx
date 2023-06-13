@@ -13,7 +13,7 @@ export const Tab = ({ tab, isFilterTab, isActiveTab, handleClick }) => {
       className={`tab-btn ${
         isFilterTab ? "rounded-full glassmorhism" : "rounded-4"
       }`}
-      onclick={handleClick}
+      onClick={handleClick}
       style={activeStyles}
     >
       <img
