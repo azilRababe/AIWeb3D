@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Built output
+dist/
+build/
+out/
+
+# Environment variables
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug files
+.vscode/
+*.swp
+*.bak
+*.tmp
+
+# Testing
+coverage/
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+npm-shrinkwrap.json
+.pnp.js
+
+# Build-related files
+.DS_Store
+yarn-error.log
