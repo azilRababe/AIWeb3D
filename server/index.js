@@ -12,10 +12,6 @@ app.use(express.json({ limig: "50mb" }));
 
 app.use("/api/v1/dalle", dalleRoutes);
 
-// app.get("/", (req, res) => {
-//   res.status(200).json({ message: "Hello World" });
-// });
-
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });

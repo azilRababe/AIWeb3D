@@ -23,7 +23,7 @@ export const Customizer = () => {
   const [prompt, setPrompt] = useState("");
   const [generatingImg, setGeneratingImg] = useState(false);
   const [activeEditorTab, setActiveEditorTab] = useState("");
-  const [activeFilerTab, setActiveFilterTab] = useState({
+  const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
     stylishShort: false,
   });
@@ -52,14 +52,22 @@ export const Customizer = () => {
   // handle submit
   const handleSubmit = async (type) => {
     if (!prompt) return alert("Please enter a prompt");
+
     try {
       setGeneratingImg(true);
+
       const response = await fetch("http://localhost:8080/api/v1/dalle", {
         method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ prompt }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt,
+        }),
       });
+
       const data = await response.json();
+
       handleDecals(type, `data:image/png;base64,${data.photo}`);
     } catch (error) {
       alert(error);
@@ -68,11 +76,12 @@ export const Customizer = () => {
       setActiveEditorTab("");
     }
   };
+
   // handle Decals
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
     state[decalType.stateProperty] = result;
-    if (!activeFilerTab.FilterTabs[decalType.filterTab]) {
+    if (!activeFilterTab[decalType.filterTab]) {
       handleActiveFilterTab(decalType.filterTab);
     }
   };
@@ -80,13 +89,15 @@ export const Customizer = () => {
   const handleActiveFilterTab = (tabname) => {
     switch (tabname) {
       case "logoShirt":
-        state.isLogoTexture = !activeFilerTab[tabname];
+        state.isLogoTexture = !activeFilterTab[tabname];
         break;
       case "stylishShort":
-        state.isFullTexture = !activeFilerTab[tabname];
+        state.isFullTexture = !activeFilterTab[tabname];
+        break;
       default:
         state.isLogoTexture = true;
         state.isFullTexture = false;
+        break;
     }
     setActiveFilterTab((prevState) => {
       return {
@@ -145,10 +156,17 @@ export const Customizer = () => {
                 key={tab.name}
                 tab={tab}
                 isFilterTab
-                isActiveTab={activeFilerTab[tab.name]}
+                isActiveTab={activeFilterTab[tab.name]}
                 handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
+            <button className="download-btn" onClick={downloadCanvasToImage}>
+              <img
+                src={download}
+                alt="download_image"
+                className="w-3/5 h-3/5 object-contain"
+              />
+            </button>
           </motion.div>
         </>
       )}
