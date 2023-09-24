@@ -1,68 +1,88 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;1,900&display=swap");
+/* Import fonts */
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;1,900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 @import url("https://rsms.me/inter/inter.css");
 
+/* Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Default font family */
 html {
-  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", sans-serif; */
+  font-family: "Orbitron", sans-serif;
 }
 
+/* Use Inter var when available */
 @supports (font-variation-settings: normal) {
   html {
-    font-family: "Inter var", sans-serif;
+    /* font-family: "Inter var", sans-serif; */
+    font-family: "Orbitron", sans-serif;
   }
 }
 
+/* General styles for the app */
 .app {
   @apply relative w-full h-screen overflow-hidden;
 }
 
+/* Home page styles */
 .home {
   @apply w-fit xl:h-full flex xl:justify-between justify-start items-start flex-col xl:py-8 xl:px-36 sm:p-8 p-6 max-xl:gap-7 absolute z-10;
 }
 
+/* Home content container */
 .home-content {
   @apply flex-1 xl:justify-center justify-start flex flex-col gap-10;
 }
 
+/* Header text styles */
 .head-text {
-  @apply xl:text-[10rem] text-[6rem] xl:leading-[11rem] leading-[7rem] font-black text-black;
+  @apply xl:text-[5rem] text-[6rem] xl:leading-[6rem] leading-[7rem] font-black text-black;
 }
 
+/* Download button styles */
 .download-btn {
   @apply w-14 h-14 flex justify-center items-center rounded-full glassmorphism cursor-pointer outline-none;
 }
 
+/* Editor tabs container */
 .editortabs-container {
   @apply glassmorphism w-16 border-[2px] rounded-lg flex flex-col justify-center items-center ml-1 py-4 gap-4;
 }
 
+/* Filter tabs container */
 .filtertabs-container {
   @apply absolute z-10 bottom-5 right-0 left-0 w-full flex justify-center items-center flex-wrap gap-4;
 }
 
+/* AI picker container */
 .aipicker-container {
   @apply absolute left-full ml-3 glassmorphism p-3 w-[195px] h-[220px] rounded-md flex flex-col gap-4;
 }
 
+/* AI picker textarea */
 .aipicker-textarea {
   @apply w-full bg-transparent text-sm border border-gray-300 p-2 outline-none flex-1;
 }
 
+/* File picker container */
 .filepicker-container {
   @apply absolute left-full ml-3 glassmorphism p-3 w-[195px] h-[220px] flex flex-col rounded-md;
 }
 
+/* File picker label */
 .filepicker-label {
   @apply border border-gray-300 py-1.5 px-2 rounded-md shadow-sm text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer w-fit;
 }
 
+/* Tab button styles */
 .tab-btn {
   @apply w-14 h-14 flex justify-center items-center cursor-pointer select-none;
 }
 
+/* Glassmorphism styles */
 .glassmorphism {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 2px 30px 0 rgba(31, 38, 135, 0.07);
@@ -71,12 +91,14 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+/* Hidden file input */
 input[type="file"] {
   z-index: -1;
   position: absolute;
   opacity: 0;
 }
 
+/* Custom styles for the Sketch Picker component */
 .sketch-picker {
   width: 170px !important;
   background: rgba(255, 255, 255, 0.25) !important;
@@ -87,6 +109,7 @@ input[type="file"] {
   border-radius: 6px !important;
 }
 
+/* Hide a specific element within Sketch Picker */
 .sketch-picker > div:nth-child(3) {
   display: none !important;
 }

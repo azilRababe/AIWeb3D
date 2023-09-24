@@ -19,16 +19,17 @@ export const Home = () => {
         <motion.section className="home" {...slideAnimation("left")}>
           <motion.header {...slideAnimation("down")}>
             <img
-              src="./threejs.png"
+              src="./Cat.png"
               alt="logo"
-              className="w-8 h-8 object-contain"
+              className="w-10 h-10 object-contain"
             />
           </motion.header>
 
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className="head-text">
-                LET'S <br className="xl:block hidden" /> DO IT.
+                ELEVATE
+                <br className="xl:block hidden" /> YOUR STYLE.
               </h1>
             </motion.div>
             <motion.div
@@ -36,9 +37,10 @@ export const Home = () => {
               className="flex flex-col gap-5"
             >
               <p className="max-w-md font-normal text-gray-600 text-base">
-                Create your unique and exclusive shirt with our brand-new 3D
-                customization tool. <strong>Unleash your imagination</strong>{" "}
-                and define your own style.
+                Tired of generic t-shirts? Custom Tee Designer 3E is your
+                solution for creating one-of-a-kind custom tees that reflect
+                your style and creativity.{" "}
+                <b>Stand out and wear your uniqueness proudly!</b>
               </p>
 
               <CustomButton
