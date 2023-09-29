@@ -57,7 +57,7 @@ export const Customizer = () => {
       setGeneratingImg(true);
 
       const response = await fetch(
-        "https://ai-web-3d.onrender.com/api/v1/dalle",
+        "https://aiweb3d.onrender.com/api/v1/dalle",
         {
           method: "POST",
           headers: {
