@@ -1,6 +1,7 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
 
 import dalleRoutes from "./routes/dalle.routes.js";
 
@@ -12,8 +13,12 @@ app.use(express.json({ limig: "50mb" }));
 
 app.use("/api/v1/dalle", dalleRoutes);
 
-app.route("/").get((req, res) => {
-  res.send("Hello World!");
+// Serve static files from the 'build' folder
+app.use(express.static(path.join(__dirname, "build")));
+
+// Serve your React app on all routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.listen(process.env.PORT, () => {
